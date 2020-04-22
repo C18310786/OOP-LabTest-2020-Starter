@@ -59,6 +59,8 @@ public class Gantt extends PApplet
 				float start = map(tsk.getStart(), 2, 32, leftborder , width - border );
 				float end = map(tsk.getEnd(), 2, 32, leftborder , width - border);
 				float widthRect = end - start;
+				float colour = map(i, 0, 9, 0, 255);
+				fill(colour, 255, 255);
 				rect(start, y - rectHeight / 2, widthRect, rectHeight, 5);
 			}
 		}
