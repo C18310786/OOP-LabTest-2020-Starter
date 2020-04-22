@@ -39,25 +39,28 @@ public class Gantt extends PApplet
 	public void displayTasks()
 	{
 		float border = width * 0.10f;
+		float leftborder = 200;
+		float rectHeight = 35;
 
-		stroke(255, 255, 255);
+		stroke(255);
 		textAlign(CENTER, CENTER);
-		for(int i = 0; i <= 30; i++)
+		for(int i = 0; i < 30; i++)
 		{
-			float x = map(i, 0, 30, 200, width - border);
+			float x = map(i, 1, 31, leftborder , width - border);
+			float y = map(i, 9, 0, height - border, 110);
 			line(x, border - 30, x, height - 25);
 			fill(255);
-			text(i, x, border / 2);
-		}
+			text(i + 1, x, border / 2);
+			if(i < 9)
+			{
+				Tasks tsk = task.get(i);
+				text(tsk.getTask(), border / 2, y);
+				float start = map(tsk.getStart(), 2, 30, leftborder , width - border );
+				float end = map(tsk.getEnd(), 2, 30, leftborder , width - border);
+				float widthRect = end - start;
 
-		for(int i = 0; i < 9; i++)
-		{
-			Tasks tsk = task.get(i);
-
-			float y = map(i, 1, 9, height - border, 110);
-			rect(100, y, 200, y);
-			text(tsk.getTask(), border / 2, y);
-		
+				rect(start, y - 10 / 2, widthRect, 20, 2);
+			}
 		}
 	}
 	
@@ -77,6 +80,7 @@ public class Gantt extends PApplet
 	{
 		loadTasks();
 		printTasks();
+		colorMode(HSB);
 	}
 	
 	public void draw()
