@@ -48,7 +48,16 @@ public class Gantt extends PApplet
 			line(x, border - 30, x, height - 25);
 			fill(255);
 			text(i, x, border / 2);
-			text(, border / 2, x);
+		}
+
+		for(int i = 0; i < 9; i++)
+		{
+			Tasks tsk = task.get(i);
+
+			float y = map(i, 1, 9, height - border, 110);
+			rect(100, y, 200, y);
+			text(tsk.getTask(), border / 2, y);
+		
 		}
 	}
 	

@@ -45,9 +45,11 @@ public class Tasks {
 
     public Tasks(TableRow tr)
     {
-        tr.getString("Task");
-        tr.getInt("Start");
-        tr.getInt("End");
+        this(
+            tr.getString("Task"),
+            tr.getInt("Start"),
+            tr.getInt("End")
+        );
     }
 
     public String toString()
