@@ -43,10 +43,10 @@ public class Gantt extends PApplet
 		float border = width * 0.10f;
 		float leftborder = 200;
 		float rectHeight = 35;
-
 		textAlign(CENTER, CENTER);
 		for(int i = 0; i < 30; i++)
 		{
+			textSize(12);
 			stroke(255);
 			float x = map(i, 1, 31, leftborder , width - border);
 			float y = map(i, 9, 0, height - border, 110);
@@ -55,6 +55,7 @@ public class Gantt extends PApplet
 			text(i + 1, x, border / 2);
 			if(i < 9)
 			{
+				textSize(20);
 				noStroke();
 				Tasks tsk = task.get(i);
 				text(tsk.getTask(), border / 2, y);
@@ -115,11 +116,11 @@ public class Gantt extends PApplet
 			}
 		}
 		
-		if(rSelect > -1)
+		else if(rSelect > -1)
 		{
 			Tasks tsk = task.get(rSelect);
 			num = (int) map(mouseX, 0, width, 0, totalDays);
-			if(tsk.getStart() - num >= 1 && num > tsk.getStart() && num <= totalDays)
+			if(num - tsk.getStart() >= 1 && num > tsk.getStart() && num <= totalDays)
 			{
 				tsk.setEnd(num);
 			}
