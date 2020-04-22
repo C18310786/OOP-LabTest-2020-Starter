@@ -42,24 +42,24 @@ public class Gantt extends PApplet
 		float leftborder = 200;
 		float rectHeight = 35;
 
-		stroke(255);
 		textAlign(CENTER, CENTER);
 		for(int i = 0; i < 30; i++)
 		{
+			stroke(255);
 			float x = map(i, 1, 31, leftborder , width - border);
 			float y = map(i, 9, 0, height - border, 110);
-			line(x, border - 30, x, height - 25);
+			line(x, border - 40, x, height - 40);
 			fill(255);
 			text(i + 1, x, border / 2);
 			if(i < 9)
 			{
+				noStroke();
 				Tasks tsk = task.get(i);
 				text(tsk.getTask(), border / 2, y);
-				float start = map(tsk.getStart(), 2, 30, leftborder , width - border );
-				float end = map(tsk.getEnd(), 2, 30, leftborder , width - border);
+				float start = map(tsk.getStart(), 2, 32, leftborder , width - border );
+				float end = map(tsk.getEnd(), 2, 32, leftborder , width - border);
 				float widthRect = end - start;
-
-				rect(start, y - 10 / 2, widthRect, 20, 2);
+				rect(start, y - rectHeight / 2, widthRect, rectHeight, 5);
 			}
 		}
 	}
